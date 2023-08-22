@@ -8,7 +8,7 @@
         chainId:null
     };
 </script>
-<div class = 'grid v-screen place-items-center p-3'>
+<div class = 'flex flex-wrap grid v-screen place-items-center p-3'>
     <nav class='navbar-center'>
     <a class='p-3' href='/about'>Home</a>
     <a class='p-3' href='/news'>News</a>
