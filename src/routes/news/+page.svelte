@@ -1,7 +1,7 @@
 <script>
+	import {escapeHtml} from '$lib/utils';
     /** @type {import('./$types').PageData} */
     export let data;
-    // console.log(data.response)
 </script>
 <div class='flex flex-wrap m-3 p-3 h-screen w-screen overscroll-y-none'>
     <div class='h-3/4 p-3 overflow-y-scroll'>
@@ -10,10 +10,10 @@
             <ol type ='1' class ='p-3'>
                 <li>
                     <div>
-                        <a class = 'text-lg' href={k.link}>{k.title}</a>
+                        <a class = 'text-lg' href={k.link}>{escapeHtml(k.title)}</a>
                         <p class = 'text-xs'>{k.pubDate}</p>
                         <span class='text-xs break-words'>
-                            {k.description.replace( /(<([^>]+)>)/ig, '')}
+                            {escapeHtml(k.description.replace( /(<([^>]+)>)/ig, ''))}
                         </span> 
                     </div>
                 </li>
@@ -21,8 +21,8 @@
         </div>
         {/each}
     </div>
-    <div>
+    <!-- <div>
         <iframe title="Libsyn Player" style="border: none" src="//html5-player.libsyn.com/embed/episode/id/27797622/height/90/theme/custom/thumbnail/yes/direction/forward/render-playlist/no/custom-color/000000/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-    </div>
+    </div> -->
 
 </div>
