@@ -1,0 +1,8 @@
+{
+    "New York Times": "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+    "SEC Press Releases":"https://www.sec.gov/news/pressreleases.rss",
+    "Cointelegraph":"https://cointelegraph.com/rss",
+    "CoinDesk":"https://www.coindesk.com/arc/outboundfeeds/rss/",
+    "Benzinga":"https://www.benzinga.com/markets/cryptocurrency/feed",
+    "FX Street Crypto":"https://www.fxstreet.com/rss/crypto"
+}

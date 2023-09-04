@@ -1,24 +1,26 @@
 <script>
 	import {escapeHtml} from '$lib/utils';
+    import {updated} from '$app/stores';
     /** @type {import('./$types').PageData} */
     export let data;
+    // "Bitcoin Magazine":"https://bitcoinmagazine.com/.rss/full/"
 </script>
-<div class='flex flex-wrap m-3 p-3 h-screen w-screen overscroll-y-none'>
-    <div class='h-3/4 p-3 overflow-y-scroll'>
-        {#each data.response as k}
-        <div class = "border-t border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400 rounded-t lg:rounded-t rounded-b lg:rounded-b lg:rounded-r m-3 p-3 flex flex-col justify-between leading-normal">
-            <ol type ='1' class ='p-3'>
-                <li>
-                    <div>
-                        <a class = 'text-lg' href={k.link}>{escapeHtml(k.title)}</a>
-                        <p class = 'text-xs'>{k.pubDate}</p>
-                        <span class='text-xs break-words'>
-                            {escapeHtml(k.description.replace( /(<([^>]+)>)/ig, ''))}
-                        </span> 
-                    </div>
-                </li>
-            </ol>    
-        </div>
+<div class='flex flex-wrap h-screen w-screen  justify-center'>
+    <div class='h-3/4 overflow-y-hidden hover:scroll-smooth max-w-screen-lg' style ='-webkit-overflow-scrolling: touch; overflow-y:scroll' data-sveltekit-reload={$updated ? "":"off"}>
+        {#each data.newsFeed.slice(0,20) as k}
+        <article class = "border-t border-r border-b border-l border-gray-400 lg:border-l lg:border-t lg:border-gray-400 rounded-t lg:rounded-t rounded-b lg:rounded-b lg:rounded-r m-3 p-3 flex flex-col justify-between leading-normal">
+            <a class = 'text-lg text-left p-1' href={k.link}><strong>{escapeHtml(k.title)}
+            </strong></a>
+            <p class = 'text-xs text-left p-2'>
+                <strong>{k.source}</strong>; {k.utcTime}
+            </p>
+            <p class='text-sm break-words p-2 text-left'>
+                {escapeHtml(k.description.replace( /(<([^>]+)>)/ig, ''))}
+            </p>
+            <!-- {#if k.category}
+            <p class = 'text-s m-3 text-left'>{(k.category.slice(0,10))}</p>
+            {/if} -->
+        </article>
         {/each}
     </div>
     <!-- <div>

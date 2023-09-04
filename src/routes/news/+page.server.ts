@@ -1,29 +1,32 @@
 
 import { XMLParser } from 'fast-xml-parser';
-
+// import SearchBar from '$lib/SearchBar.svelte';
+import newsSource from '$lib/newsSource.json';
 /** @type {import('./$types').PageServerLoad} */
-// let newsFeed = {
-//     "categories": null,
-
-// }
 export async function load() {
-    // const data = getData() 
+    const newsFeed =[];
+    for (const k in newsSource){
+        const feed = await get_newsArticles(newsSource[k]);
+        if(k==='FX Street Crypto'){           
+                feed.response.forEach(v=>{v.source=k,v.utcTime=v['a10:updated'].toLocaleString('US')});
+        }
+        else {
+            feed.response.forEach(v=>{v.source=k,v.utcTime=v.pubDate.toLocaleString('US')});
+        }
+        newsFeed.push(...feed.response);
+    }
+    newsFeed.sort(function(a:any,b:any){
+        return new Date(b.utcTime).getTime() - new Date(a.utcTime).getTime();
+    })
+    
+    return {newsFeed};
+}
+async function get_newsArticles(url:string){
     const parser = new XMLParser();
-    const url = 'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml';
-    // const url = 'https://www.reutersagency.com/feed/?best-topics=business-finance&post_type=best';
-    // const url = 'https://cointelegraph.com/rss';
-    // const url = 'https://www.benzinga.com/markets/feed';
-    // example consuming code
-    // const body = await parseRSS(
-    //   url
-    // );
     const response = await fetch(url)
     .then((res)=>res.text())
     .then((rawXML)=>parser.parse(rawXML).rss.channel.item)
-// const sorted_response = response.sort((x:String,y:String)=> Date.parse(x) - Date.parse(y.pubDate:String))
-    response.sort(function(a:any,b:any){
-        return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
-    });
+    // response.forEach(v=>{});
     
-return {response};
+    return {response};
 }
