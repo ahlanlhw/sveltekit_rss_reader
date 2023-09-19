@@ -4,5 +4,7 @@
     "Cointelegraph":"https://cointelegraph.com/rss",
     "CoinDesk":"https://www.coindesk.com/arc/outboundfeeds/rss/",
     "Benzinga":"https://www.benzinga.com/markets/cryptocurrency/feed",
-    "FX Street Crypto":"https://www.fxstreet.com/rss/crypto"
+    "FX Street Crypto":"https://www.fxstreet.com/rss/crypto",
+    "Decrypt":"https://decrypt.co/feed",
+    "BeinCrypto Markets":"https://beincrypto.com/markets/feed/"
 }

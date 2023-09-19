@@ -15,6 +15,7 @@ export function escapeHtml(text:string){
     .replace(/&nbsp;/g, " ")
     .replace(/&#8230;/g, "...")
     .replace(/&#8242;/g, "'")
+    .replace(/&rsquo;/g, "'")
 }
 
 export  function unicodeToChar(text:string) {
