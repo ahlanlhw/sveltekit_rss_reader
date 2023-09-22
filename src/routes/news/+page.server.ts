@@ -6,14 +6,14 @@ import newsSource from '$lib/newsSource.json';
 export async function load() {
     const newsFeed = await runParser();
 
-    const signals = await get_url_data("https://api.spotonchain.com/api/onchain/get_monitor_tokens");
-    // console.log(signals);
-    signals.response.data.monitor_tokens.sort(function(a:any,b:any){
-        return b.smart_money_flow_usd - a.smart_money_flow_usd  ;
-    })
+    // const signals = await get_url_data("https://api.spotonchain.com/api/onchain/get_monitor_tokens");
+    // // console.log(signals);
+    // signals.response.data.monitor_tokens.sort(function(a:any,b:any){
+    //     return b.smart_money_flow_usd - a.smart_money_flow_usd  ;
+    // })
     const output = {
         "news":{newsFeed},
-        "onchain_signal":{signals},
+        // "onchain_signal":{signals},
     };
     return {output};
 }
@@ -27,12 +27,12 @@ async function get_newsArticles(url:string){
     return {response};
 }
 
-async function get_url_data(url:string){
-    const response = await fetch(url)
-    .then((res)=> res.json());
-    // console.log(response);
-    return {response};
-}
+// async function get_url_data(url:string){
+//     const response = await fetch(url)
+//     .then((res)=> res.json());
+//     // console.log(response);
+//     return {response};
+// }
 
 async function runParser(){
     const newsFeed =[];
