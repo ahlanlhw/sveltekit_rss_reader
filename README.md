@@ -24,3 +24,6 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 # 0x_swap_sveltekit
+
+![image](https://github.com/ahlanlhw/0x_swap_sveltekit/assets/44397602/68cc94ce-893f-475b-83f8-8e107244ebbb)
+
