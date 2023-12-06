@@ -4,7 +4,8 @@
     import {updated} from '$app/stores';
     /** @type {import('./$types').PageData} */
     export let data;
-    // "Bitcoin Magazine":"https://bitcoinmagazine.com/.rss/full/"
+    // "FT Markets":"https://www.ft.com/markets?format=rss",
+    // "CME News Release":"http://feeds.feedburner.com/mediaroom/CMsF"
 </script>
 <!-- <Marquee> -->
     <!-- {#each data.output.onchain_signal.signals.response.data.monitor_tokens as v} -->

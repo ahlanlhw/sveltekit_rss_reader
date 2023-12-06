@@ -39,7 +39,9 @@ async function runParser(){
     for (const k in newsSource){
         const feed = await get_newsArticles(newsSource[k]);
         if(k==='FX Street Crypto'){           
-                feed.response.forEach(v=>{v.source=k,v.utcTime=v['a10:updated'].toLocaleString('US')});
+            // "FX Street Crypto":"https://www.fxstreet.com/rss/crypto",
+            // "Bloomberg Crypto":"https://feeds.bloomberg.com/crypto/news.rss/"
+            feed.response.forEach(v=>{v.source=k,v.utcTime=v['a10:updated'].toLocaleString('US')});
         }
         else {
             feed.response.forEach(v=>{v.source=k,v.utcTime=v.pubDate.toLocaleString('US')});
